@@ -1,0 +1,12 @@
+;; example user-config definition to add to ~/.spacemacs
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration. You are free to put any user code."
+  (mkdir "~/.spacemacs.d/" t)
+  (if (file-exists-p "~/.spacemacs.d/init.el")
+      (load-file "~/.spacemacs.d/init.el"))
+  (if (file-exists-p "~/.spacemacs.d/local.el")
+      (load-file "~/.spacemacs.d/local.el"))
+  )
