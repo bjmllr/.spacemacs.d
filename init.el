@@ -57,7 +57,7 @@ of seeing_is_believing."
                              "seeing_is_believing -x -n 100 -t 10"
                              nil 'replace)
     (goto-char origin)))
-(define-key ruby-mode-map (kbd "C-c C-c") 'seeing-is-believing)
+(define-key 'ruby-mode-map (kbd "C-c C-c") 'seeing-is-believing)
 
 (add-hook 'ruby-mode-hook 'flycheck-mode)
 
