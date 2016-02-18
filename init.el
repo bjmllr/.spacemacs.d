@@ -76,5 +76,17 @@ of seeing_is_believing."
   (re-search-forward "[^\]\[\)\(\}\{[:space:]\n,]")
   (backward-char))
 (spacemacs/set-leader-keys ", h" 'prev-delimiter)
+(defun transpose-around-comma ()
+    (interactive)
+    (re-search-forward ",")
+    (delete-horizontal-space)
+    (delete-backward-char 1)
+    (push-mark)
+    (backward-sexp 1)
+    (kill-region (point) (mark))
+    (forward-sexp 1)
+    (insert ", ")
+    (yank))
+(spacemacs/set-leader-keys ", t" 'transpose-around-comma)
 
 ;; 80 column line (for screen calibration);;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
