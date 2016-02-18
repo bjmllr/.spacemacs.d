@@ -67,7 +67,7 @@ of seeing_is_believing."
   (re-search-forward "[\[\(\{,]")
   (re-search-forward "[^\]\[\)\(\}\{[:space:]\n,]")
   (backward-char))
-(global-set-key (kbd "M-]") 'next-delimiter)
+(spacemacs/set-leader-keys ", l" 'next-delimiter)
 (defun prev-delimiter ()
   (interactive)
   (re-search-backward "[\]\)\},]")
@@ -75,6 +75,6 @@ of seeing_is_believing."
   (re-search-backward "[\[\(\{,]")
   (re-search-forward "[^\]\[\)\(\}\{[:space:]\n,]")
   (backward-char))
-(global-set-key (kbd "M-[") 'prev-delimiter)
+(spacemacs/set-leader-keys ", h" 'prev-delimiter)
 
 ;; 80 column line (for screen calibration);;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
