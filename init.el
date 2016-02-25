@@ -1,7 +1,9 @@
 (let ((default-directory  "~/.spacemacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-(require 'crystal-mode)
+(defun surround-with-do-end ()
+  (push '(?d . ("do" . "end")) evil-surround-pairs-alist))
+
 
 (defun arrange-windows-two-by-two ()
   (interactive)
@@ -44,7 +46,13 @@
   (clear-visited-file-modtime))
 (spacemacs/set-leader-keys "f ." 'touch)
 
+;;; Crystal
+(require 'crystal-mode)
+(add-hook 'crystal-mode-hook 'surround-with-do-end)
+
 ;; Ruby
+(require 'ruby-mode)
+(add-hook 'ruby-mode-hook 'surround-with-do-end)
 
 (defun seeing-is-believing ()
   "Replace the current region (or the whole buffer, if none) with the output
