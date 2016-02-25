@@ -1,6 +1,26 @@
 (let ((default-directory  "~/.spacemacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
+;;; Snippets
+
+(defun insert-backticks-for-code-block ()
+  (interactive)
+  (end-of-line)
+  (copy-to-register 'indentation-and-comment-prefix
+                    (line-beginning-position) (line-end-position))
+  (insert "```")
+  (insert (replace-regexp-in-string "-mode" "" (symbol-name major-mode)))
+  (insert "\n")
+  (insert-register 'indentation-and-comment-prefix)
+  (end-of-line)
+  (insert "```")
+  (previous-line)
+  (end-of-line)
+  (insert "\n")
+  (insert-register 'indentation-and-comment-prefix)
+  (end-of-line))
+(spacemacs/set-leader-keys "i `" 'insert-backticks-for-code-block)
+
 ;;; Surrounding
 
 (defun surround-with-do-end ()
