@@ -1,9 +1,12 @@
 (let ((default-directory  "~/.spacemacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
+;;; Surrounding
+
 (defun surround-with-do-end ()
   (push '(?d . ("do" . "end")) evil-surround-pairs-alist))
 
+;;; Window Placement
 
 (defun arrange-windows-two-by-two ()
   (interactive)
