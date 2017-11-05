@@ -76,6 +76,15 @@
 (require 'crystal-mode)
 (add-hook 'crystal-mode-hook 'surround-with-do-end)
 
+(defun dominate-compile-specs ()
+  "finds a Makefile and runs make spec"
+  (interactive)
+  (when (locate-dominating-file default-directory "Makefile")
+    (with-temp-buffer
+      (cd (locate-dominating-file default-directory "Makefile"))
+      (compile "make spec"))))
+(spacemacs/set-leader-keys "c s" 'dominate-compile-specs)
+
 ;; Ruby
 (require 'ruby-mode)
 (add-hook 'ruby-mode-hook 'surround-with-do-end)
