@@ -76,15 +76,14 @@
 (require 'crystal-mode)
 (add-hook 'crystal-mode-hook 'surround-with-do-end)
 
-(defun dominate-compile-specs ()
-  "finds a Makefile and runs make spec"
+(defun crystal-compile-specs ()
+  "finds shard.yml and runs crystal spec"
   (interactive)
-  (when (locate-dominating-file default-directory "Makefile")
+  (when (locate-dominating-file default-directory "shard.yml")
     (with-temp-buffer
-      (cd (locate-dominating-file default-directory "Makefile"))
-      (compile "make spec"))))
-(spacemacs/set-leader-keys "c s" 'dominate-compile-specs)
-(define-key crystal-mode-map (kbd "C-c C-c") 'dominate-compile-specs)
+      (cd (locate-dominating-file default-directory "shard.yml"))
+      (compile "crystal spec"))))
+(define-key crystal-mode-map (kbd "C-c C-c") 'crystal-compile-specs)
 
 (defun crystal-indent-with-compiler ()
   (interactive)
