@@ -69,6 +69,9 @@
   (clear-visited-file-modtime))
 (spacemacs/set-leader-keys "f ." 'touch)
 
+;;; JavaScript
+(setq-default js2-basic-offset 2)
+
 ;;; Crystal
 (require 'crystal-mode)
 (add-hook 'crystal-mode-hook 'surround-with-do-end)
