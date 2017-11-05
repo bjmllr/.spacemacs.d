@@ -86,6 +86,15 @@
 (spacemacs/set-leader-keys "c s" 'dominate-compile-specs)
 (define-key crystal-mode-map (kbd "C-c C-c") 'dominate-compile-specs)
 
+(defun crystal-indent-with-compiler ()
+  (interactive)
+  (shell-command
+   (format "crystal tool format %s"
+           (shell-quote-argument (buffer-file-name)))
+   )
+  (revert-buffer t t t))
+(define-key crystal-mode-map (kbd "C-c C-f") 'crystal-indent-with-compiler)
+
 ;; Ruby
 (require 'ruby-mode)
 (add-hook 'ruby-mode-hook 'surround-with-do-end)
