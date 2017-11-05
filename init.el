@@ -84,6 +84,7 @@
       (cd (locate-dominating-file default-directory "Makefile"))
       (compile "make spec"))))
 (spacemacs/set-leader-keys "c s" 'dominate-compile-specs)
+(define-key crystal-mode-map (kbd "C-c C-c") 'dominate-compile-specs)
 
 ;; Ruby
 (require 'ruby-mode)
