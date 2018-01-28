@@ -79,6 +79,7 @@
 (defun crystal-compile-specs ()
   "finds shard.yml and runs crystal spec"
   (interactive)
+  (save-buffer)
   (when (locate-dominating-file default-directory "shard.yml")
     (with-temp-buffer
       (cd (locate-dominating-file default-directory "shard.yml"))
@@ -87,6 +88,7 @@
 
 (defun crystal-indent-with-compiler ()
   (interactive)
+  (save-buffer)
   (shell-command
    (format "crystal tool format %s"
            (shell-quote-argument (buffer-file-name)))
