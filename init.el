@@ -100,6 +100,31 @@
 (require 'ruby-mode)
 (add-hook 'ruby-mode-hook 'surround-with-do-end)
 
+(defun ruby-block-end-comment ()
+  "Add a comment to an end keyword describing how the block started"
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (skip-chars-forward " ")
+    (if (string= (thing-at-point 'word) "end")
+        (ruby-beginning-of-block)
+      (progn
+        (ruby-end-of-block)
+        (ruby-beginning-of-block)
+        )
+      )
+    (push-mark (point))
+    (end-of-line)
+    (kill-ring-save (mark) (point))
+    (ruby-end-of-block)
+    (forward-word)
+    (push-mark (point))
+    (end-of-line)
+    (delete-region (mark) (point))
+    (insert " # " (pop kill-ring))
+    ))
+(define-key ruby-mode-map (kbd "C-c C-e") 'ruby-block-end-comment)
+
 (defun seeing-is-believing ()
   "Replace the current region (or the whole buffer, if none) with the output
 of seeing_is_believing."
