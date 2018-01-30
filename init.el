@@ -28,6 +28,20 @@
 
 ;;; Window Placement
 
+(defun current-buffer-favorite-p ()
+  (-none-p (lambda (re)
+             (string-match-p re (buffer-name)
+                             ))
+           spacemacs-useless-buffers-regexp)
+  )
+
+(defun cycle-favorite-buffers (steps)
+  (dotimes (i steps)
+    (next-buffer)
+    (while (not (current-buffer-favorite-p))
+      (next-buffer))
+    ))
+
 (defun arrange-windows-two-by-two ()
   (interactive)
   (delete-other-windows)
@@ -36,10 +50,10 @@
   (windmove-down)
   (split-window-right)
   (balance-windows)
-  (select-window-2) (spacemacs/next-useful-buffer)
-  (select-window-3) (spacemacs/next-useful-buffer)
-  (select-window-4) (spacemacs/next-useful-buffer)
-  (select-window-1)
+  (winum-select-window-2) (cycle-favorite-buffers 1)
+  (winum-select-window-3) (cycle-favorite-buffers 2)
+  (winum-select-window-4) (cycle-favorite-buffers 3)
+  (winum-select-window-1)
   )
 (spacemacs/set-leader-keys "w 4" 'arrange-windows-two-by-two)
 
@@ -53,12 +67,12 @@
   (split-window-right)
   (split-window-right)
   (balance-windows)
-  (select-window-2) (spacemacs/next-useful-buffer)
-  (select-window-3) (spacemacs/next-useful-buffer)
-  (select-window-4) (spacemacs/next-useful-buffer)
-  (select-window-5) (spacemacs/next-useful-buffer)
-  (select-window-6) (spacemacs/next-useful-buffer)
-  (select-window-1))
+  (winum-select-window-2) (cycle-favorite-buffers 1)
+  (winum-select-window-3) (cycle-favorite-buffers 2)
+  (winum-select-window-4) (cycle-favorite-buffers 3)
+  (winum-select-window-5) (cycle-favorite-buffers 4)
+  (winum-select-window-6) (cycle-favorite-buffers 5)
+  (winum-select-window-1))
 (spacemacs/set-leader-keys "w 6" 'arrange-windows-three-by-two)
 
 ;; http://stackoverflow.com/questions/8989540/touch-current-file-in-emacs
