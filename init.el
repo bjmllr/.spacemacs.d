@@ -1,6 +1,13 @@
 (let ((default-directory  "~/.spacemacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
+;;; Sessions
+
+(setq history-length 100)
+(put 'minibuffer-history 'history-length 50)
+(put 'evil-ex-history 'history-length 50)
+(put 'kill-ring 'history-length 25)
+
 ;;; Snippets
 
 (defun insert-backticks-for-code-block ()
