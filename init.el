@@ -49,6 +49,14 @@
       (next-buffer))
     ))
 
+(defun scratch ()
+  (interactive)
+  (if (string= "*scratch*" (buffer-name))
+      (cycle-favorite-buffers 1)
+    (switch-to-buffer "*scratch*"))
+  )
+(spacemacs/set-leader-keys "w SPC" 'scratch)
+
 (defun arrange-windows-two-by-two ()
   (interactive)
   (delete-other-windows)
