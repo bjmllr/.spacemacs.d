@@ -1,6 +1,15 @@
 (let ((default-directory  "~/.spacemacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
+;;; Modeline
+
+;; Hide Minor Modes
+(spacemacs|diminish flycheck-mode nil)
+(spacemacs|diminish flyspell-mode nil)
+(spacemacs|diminish rubocop-mode nil)
+(spacemacs|diminish smartparens-mode nil)
+(spacemacs|diminish which-key-mode nil)
+
 ;;; Sessions
 
 (setq history-length 100)
