@@ -4,6 +4,7 @@
 ;;; Modeline
 
 ;; Hide Minor Modes
+(spacemacs|diminish editorconfig-mode nil)
 (spacemacs|diminish flycheck-mode nil)
 (spacemacs|diminish flyspell-mode nil)
 (spacemacs|diminish rubocop-mode nil)
