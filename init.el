@@ -138,6 +138,7 @@
 ;; Ruby
 (require 'ruby-mode)
 (add-hook 'ruby-mode-hook 'surround-with-do-end)
+(add-hook 'ruby-mode-hook 'linum-mode)
 
 (defun ruby-block-end-comment ()
   "Add a comment to an end keyword describing how the block started"
