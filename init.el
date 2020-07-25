@@ -259,7 +259,9 @@ of seeing_is_believing."
 
 (add-hook 'ruby-mode-hook 'flycheck-mode)
 
-;; Delimiter Navigation
+;; Navigation
+(define-key global-map (kbd "C-c C-j") 'evil-avy-goto-char)
+
 (defun next-delimiter ()
   (interactive)
   (re-search-forward "[\[\(\{,]")
