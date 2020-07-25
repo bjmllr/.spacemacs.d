@@ -96,20 +96,40 @@
 
 (defun arrange-windows-three-by-two ()
   (interactive)
+  ;; reset window layout
   (delete-other-windows)
+
+  ;; set number of windows to 6 (columns > rows)
+  (split-window-right)
+  (split-window-right)
   (split-window-below)
-  (split-window-right)
-  (split-window-right)
-  (windmove-down)
-  (split-window-right)
-  (split-window-right)
-  (balance-windows)
+  (windmove-right)
+  (split-window-below)
+  (windmove-right)
+  (split-window-below)
+
+  (winum-select-window-1) (window-resize nil 15 t)
+  (winum-select-window-3) (window-resize nil 15 t)
+
+  (winum-select-window-5)
   (winum-select-window-2) (cycle-favorite-buffers 1)
   (winum-select-window-3) (cycle-favorite-buffers 2)
   (winum-select-window-4) (cycle-favorite-buffers 3)
   (winum-select-window-5) (cycle-favorite-buffers 4)
   (winum-select-window-6) (cycle-favorite-buffers 5)
-  (winum-select-window-1))
+
+  (winum-select-window-5) (evil-window-set-width 80)
+
+  (dotimes (number 3)
+    (progn
+     (winum-select-window-1) (evil-window-set-width 80)
+     (winum-select-window-2) (evil-window-set-width 80)
+     (winum-select-window-3) (evil-window-set-width 80)
+     (winum-select-window-4) (evil-window-set-width 80)
+     )
+    )
+  (winum-select-window-1) (evil-window-set-width 80)
+  )
 (spacemacs/set-leader-keys "w 6" 'arrange-windows-three-by-two)
 
 ;; http://stackoverflow.com/questions/8989540/touch-current-file-in-emacs
