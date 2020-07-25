@@ -190,7 +190,6 @@
 ;; Ruby
 (require 'ruby-mode)
 (add-hook 'ruby-mode-hook 'surround-with-do-end)
-(add-hook 'ruby-mode-hook 'linum-mode)
 (setq ruby-insert-encoding-magic-comment nil)
 
 (defun ruby-block-end-comment ()
