@@ -51,6 +51,10 @@
 (defun surround-with-do-end ()
   (push '(?d . ("do" . "end")) evil-surround-pairs-alist))
 
+;;; Version Control
+
+(spacemacs/set-leader-keys "p m" 'magit-blame)
+
 ;;; Window Placement
 
 (defun current-buffer-favorite-p ()
