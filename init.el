@@ -132,6 +132,26 @@
   )
 (spacemacs/set-leader-keys "w 6" 'arrange-windows-three-by-two)
 
+(defun swap-buffer-window-follow-1 () "move this buffer and focus to window 1"
+       (interactive) (swap-buffer-window-no-follow-1) (winum-select-window-1))
+(defun swap-buffer-window-follow-2 () "move this buffer and focus to window 2"
+       (interactive) (swap-buffer-window-no-follow-2) (winum-select-window-2))
+(defun swap-buffer-window-follow-3 () "move this buffer and focus to window 3"
+       (interactive) (swap-buffer-window-no-follow-3) (winum-select-window-3))
+(defun swap-buffer-window-follow-4 () "move this buffer and focus to window 4"
+       (interactive) (swap-buffer-window-no-follow-4) (winum-select-window-4))
+(defun swap-buffer-window-follow-5 () "move this buffer and focus to window 5"
+       (interactive) (swap-buffer-window-no-follow-5) (winum-select-window-5))
+(defun swap-buffer-window-follow-6 () "move this buffer and focus to window 6"
+       (interactive) (swap-buffer-window-no-follow-6) (winum-select-window-6))
+
+(spacemacs/set-leader-keys "w e 1" 'swap-buffer-window-follow-1)
+(spacemacs/set-leader-keys "w e 2" 'swap-buffer-window-follow-2)
+(spacemacs/set-leader-keys "w e 3" 'swap-buffer-window-follow-3)
+(spacemacs/set-leader-keys "w e 4" 'swap-buffer-window-follow-4)
+(spacemacs/set-leader-keys "w e 5" 'swap-buffer-window-follow-5)
+(spacemacs/set-leader-keys "w e 6" 'swap-buffer-window-follow-6)
+
 ;; http://stackoverflow.com/questions/8989540/touch-current-file-in-emacs
 (defun touch ()
   "updates mtime on the file for the current buffer"
