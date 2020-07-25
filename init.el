@@ -9,6 +9,7 @@
 (spacemacs|diminish flyspell-mode nil)
 (spacemacs|diminish rubocop-mode nil)
 (spacemacs|diminish smartparens-mode nil)
+(spacemacs|diminish super-save-mode nil)
 (spacemacs|diminish which-key-mode nil)
 
 ;;; Sessions
@@ -37,6 +38,13 @@
   (insert-register 'indentation-and-comment-prefix)
   (end-of-line))
 (spacemacs/set-leader-keys "i `" 'insert-backticks-for-code-block)
+
+;;; Saving
+
+(super-save-mode +1)
+(setq super-save-auto-save-when-idle t)
+(setq auto-save-default nil)
+(setq super-save-remote-files nil)
 
 ;;; Surrounding
 
